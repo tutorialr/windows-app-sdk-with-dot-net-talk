@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap uap3 rescap">
+
+  <Identity
+    Name="f17008ec-ea69-4088-a6dc-d79c782f389f"
+    Publisher="CN=Tutorialr"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="f17008ec-ea69-4088-a6dc-d79c782f389f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Pomodoro</DisplayName>
+    <PublisherDisplayName>Tutorialr</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="Pomodoro"
+        Description="Pomodoro Timer"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+		<Extensions>
+			<com:Extension Category="windows.comServer">
+				<com:ComServer>
+					<com:ExeServer Executable="Pomodoro.Desktop.exe" Arguments="-headless" DisplayName="Pomodoro">
+						<com:Class Id="34dd0cbf-2867-4c3f-9c45-8b8c0a36231e" DisplayName="Pomodoro" />
+					</com:ExeServer>
+				</com:ComServer>
+			</com:Extension>
+			<uap3:Extension Category="windows.appExtension">
+				<uap3:AppExtension Name="com.microsoft.windows.widgets" DisplayName="Pomodoro" Id="Pomodoro.Desktop" PublicFolder="Public">
+					<uap3:Properties>
+						<WidgetProvider>
+							<ProviderIcons>
+								<Icon Path="Assets\StoreLogo.png" />
+							</ProviderIcons>
+							<Activation>
+								<!-- Apps exports COM interface which implements IWidgetProvider -->
+								<CreateInstance ClassId="34dd0cbf-2867-4c3f-9c45-8b8c0a36231e" />
+							</Activation>
+							<Definitions>
+								<Definition Id="PomodoroWidget"
+									DisplayName="Pomodoro"
+									Description="Pomodoro Timer">
+									<Capabilities>
+										<Capability>
+											<Size Name="small" />
+										</Capability>
+										<Capability>
+											<Size Name="medium" />
+										</Capability>
+									</Capabilities>
+									<ThemeResources>
+										<Icons>
+											<Icon Path="Assets\Pomodoro_Icon.png" />
+										</Icons>
+										<Screenshots>
+											<Screenshot Path="Assets\Pomodoro_Screenshot.png" DisplayAltText="For accessibility" />
+										</Screenshots>
+										<!-- DarkMode and LightMode are optional -->
+										<DarkMode />
+										<LightMode />
+									</ThemeResources>
+								</Definition>
+							</Definitions>
+						</WidgetProvider>
+					</uap3:Properties>
+				</uap3:AppExtension>
+			</uap3:Extension>
+		</Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "Container",
+      "verticalContentAlignment": "center",
+      "height": "stretch",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "verticalContentAlignment": "center",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Timer%20clock/3D/timer_clock_3d.png",
+                  "horizontalAlignment": "center",
+                  "size": "medium",
+                  "$when": "${$host.widgetSize==\"small\"}"
+                },
+                {
+                  "type": "Image",
+                  "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Timer%20clock/3D/timer_clock_3d.png",
+                  "horizontalAlignment": "center",
+                  "size": "large",
+                  "$when": "${$host.widgetSize==\"medium\"}"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "verticalContentAlignment": "center",
+              "items": [
+                {
+                  "style": "heading",
+                  "text": "${display}",
+                  "type": "TextBlock",
+                  "size": "extraLarge",
+                  "horizontalAlignment": "center"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
