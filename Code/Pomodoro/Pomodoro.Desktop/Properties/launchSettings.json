@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Pomodoro.Desktop (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Pomodoro.Desktop (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
